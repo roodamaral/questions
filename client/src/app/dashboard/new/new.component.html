@@ -1,0 +1,14 @@
+<a [routerLink]="['/questions','all']">Home</a>
+
+<h1>New Question</h1>
+
+<form (submit)="onSubmit()" #formData='ngForm'>
+	Question: <input type="text" name="question" [(ngModel)]="question.question" required minlength="10" #question_question='ngModel'>
+	Description: <input type="text" name="description" [(ngModel)]="question.description" #question_description='ngModel'>
+	<input type="submit" value="Add question" [disabled]="formData.invalid">
+</form>
+
+
+<span style="color: red" *ngIf="question_question.errors?.required && question_question.dirty">Question is required, bro.</span>
+
+<span style="color: red" *ngIf="question_question.errors?.minlength && question_question.dirty">Question should be more than 10 characters, bro!</span>

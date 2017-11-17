@@ -1,0 +1,27 @@
+<a [routerLink]="['/questions','all']">Home</a>
+<a [routerLink]="['/questions/update/'+ question._id]">Answer this Question!</a>
+
+
+<h1>{{question.question}}</h1>
+<h2>{{question.description}}</h2>
+<br><hr>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Answer</th>
+    <th>Detail</th>
+    <th>Likes</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let x of question.answers">
+    <td>{{x.user}}</td>
+    <td>{{x.answer}}</td>
+    <td>{{x.detail}}</td>
+    <td>{{x.likes}}</td>
+    <td> <form (submit)="onSubmit(x._id)" #formData='ngForm'>
+ 	<input type="submit" value="Like">
+ </form></td>
+
+  </tr>
+</table>

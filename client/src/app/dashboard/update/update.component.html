@@ -1,0 +1,23 @@
+<a [routerLink]="['/questions','all']">Home</a>
+<a [routerLink]="['/questions/', question._id]">Go back to question</a>
+
+<h1>
+  {{question.question}}
+</h1>
+
+<h3>
+	{{question.description}}
+</h3>
+
+<form (submit)="onSubmit()" #formData='ngForm'>
+	Your Answer: <input type="text" name="answer" [(ngModel)]="answer.answer" required minlength="5" #answer_answer='ngModel'> <br><br><br>
+	Supporting details for your answer (optional): <input type="text" name="detail" [(ngModel)]="answer.detail" #answer_detail='ngModel'>
+	<input type="submit" value="Add question" [disabled]="formData.invalid">
+	<button [routerLink]="['/questions/', question._id]"> Cancel</button>
+</form>
+
+
+
+<span style="color: red" *ngIf="answer_answer.errors?.required && answer_answer.dirty">Answer is required, bro.</span>
+
+<span style="color: red" *ngIf="answer_answer.errors?.minlength && answer_answer.dirty">Answer should be more than 5 characters, bro!</span>

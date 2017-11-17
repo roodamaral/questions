@@ -1,0 +1,15 @@
+<a [routerLink]="['/questions','new']">Add A Question!</a>
+<br> <br> 
+
+<table style="width: 50%;">
+  <tr>
+    <th>Question</th>
+    <th>Answers</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let x of questions">
+    <td>{{x.question}}</td>
+    <td>{{x.answers.length}}</td>
+    <td><a [routerLink]="['/questions/update/'+ x._id]">Answer</a> <a [routerLink]="['/questions', x._id ]">Show</a></td>
+  </tr>
+</table>
